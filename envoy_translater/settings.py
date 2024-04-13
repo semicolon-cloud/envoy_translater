@@ -26,7 +26,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import sys
 
-from envoy_translater.config import CONF as adj_conf
+from envoy_translater.config import CONF as et_conf
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_swagger",
+    "envoy_translater.listeners",
+    "envoy_translater.api",
 )
 
 MIDDLEWARE = (
@@ -97,26 +99,26 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [],
 }
 
-SECRET_KEY = adj_conf.django.secret_key
+SECRET_KEY = et_conf.django.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = adj_conf.django.debug
+DEBUG = et_conf.django.debug
 if DEBUG:
     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"].append(
         "rest_framework.renderers.BrowsableAPIRenderer"
     )
 
-ALLOWED_HOSTS = adj_conf.django.allowed_hosts
+ALLOWED_HOSTS = et_conf.django.allowed_hosts
 
 SECURE_PROXY_SSL_HEADER = (
-    adj_conf.django.secure_proxy_ssl_header,
-    adj_conf.django.secure_proxy_ssl_header_value,
+    et_conf.django.secure_proxy_ssl_header,
+    et_conf.django.secure_proxy_ssl_header_value,
 )
 
-DATABASES = adj_conf.django.databases
+DATABASES = et_conf.django.databases
 
-if adj_conf.django.logging:
-    LOGGING = adj_conf.django.logging
+if et_conf.django.logging:
+    LOGGING = et_conf.django.logging
 else:
     LOGGING = {
         "version": 1,
@@ -125,7 +127,7 @@ else:
             "file": {
                 "level": "INFO",
                 "class": "logging.FileHandler",
-                "filename": adj_conf.django.log_file,
+                "filename": et_conf.django.log_file,
             },
         },
         "loggers": {

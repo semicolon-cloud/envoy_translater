@@ -53,7 +53,7 @@ def _load_config():
     config_file_locations = list(_config_files)
     config_file_locations.append(_old_config_file)
 
-    conf_file = os.environ.get("ADJUTANT_CONFIG_FILE", None)
+    conf_file = os.environ.get("ENVOY_TRANSLATER_CONFIG_FILE", None)
 
     if conf_file:
         config_file_locations.insert(0, conf_file)

@@ -28,58 +28,6 @@ config_group.register_child_config(
         required_for_tests=False,
     )
 )
-config_group.register_child_config(
-    fields.BoolConfig(
-        "can_edit_users",
-        help_text="Is Adjutant allowed (or able) to edit users in Keystone.",
-        default=True,
-    )
-)
-config_group.register_child_config(
-    fields.BoolConfig(
-        "username_is_email",
-        help_text="Should Adjutant assume and treat all usernames as emails.",
-        default=True,
-    )
-)
-config_group.register_child_config(
-    fields.DictConfig(
-        "role_mapping",
-        help_text="A mapping from held role to roles it is allowed to manage.",
-        value_type=types.List(),
-        check_value_type=True,
-        is_json=True,
-        default={
-            "admin": [
-                "project_admin",
-                "project_mod",
-                "heat_stack_owner",
-                "member",
-            ],
-            "project_admin": [
-                "project_admin",
-                "project_mod",
-                "heat_stack_owner",
-                "member",
-            ],
-            "project_mod": [
-                "project_mod",
-                "heat_stack_owner",
-                "member",
-            ],
-        },
-        test_default={
-            "admin": ["project_admin", "project_mod", "member", "heat_stack_owner"],
-            "project_admin": [
-                "project_mod",
-                "member",
-                "heat_stack_owner",
-                "project_admin",
-            ],
-            "project_mod": ["member", "heat_stack_owner", "project_mod"],
-        },
-    )
-)
 
 _auth_group = groups.ConfigGroup("auth")
 _auth_group.register_child_config(
