@@ -37,22 +37,28 @@ class Listener(models.Model):
     class Meta:
         unique_together = ('ip', 'port')
 
-class TLSProxy(models.Model):
+class Route(models.Model):
     uuid = models.CharField(max_length=32, default=hex_uuid, primary_key=True)
     listener = models.ForeignKey(Listener, on_delete=models.CASCADE)
-    snis = models.TextField()
+    domain_names = models.TextField()
 
     keystone_user = JSONField(default={})
     project_id = models.CharField(max_length=64, null=True)
 
     target_servers = JSONField(default=[])
 
-class HTTPProxy(models.Model):
-    uuid = models.CharField(max_length=32, default=hex_uuid, primary_key=True)
-    listener = models.ForeignKey(Listener, on_delete=models.CASCADE)
-    hosts = models.TextField()
+    created_on = models.DateTimeField(default=timezone.now)
+    updated_on = models.DateTimeField(default=timezone.now)
 
-    keystone_user = JSONField(default={})
-    project_id = models.CharField(max_length=64, null=True)
-
-    target_servers = JSONField(default=[])
+    def to_dict(self):
+        return {
+            'uuid': self.uuid,
+            'listener': self.listener.uuid,
+            "external_ip": self.listener.external_ip,
+            "port": self.listener.port,
+            "type": self.listener.type,
+            'domain_names': self.domain_names.split(","),
+            'keystone_user': self.keystone_user,
+            'project_id': self.project_id,
+            'target_servers': self.target_servers
+        }
