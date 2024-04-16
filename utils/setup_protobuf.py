@@ -124,7 +124,7 @@ def compile_all():
     ]
     args = deepcopy(proto_args)
     args += proto_paths
-    args += [f"--python_out={output}"]
+    args += [f"--python_out={output}", f"--grpc_python_out={output}", f"--pyi_out={output}"]
     protoc.main((*args, *proto_files))
 
 
