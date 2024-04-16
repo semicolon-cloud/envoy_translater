@@ -23,9 +23,9 @@ ENVOY_VERSION = "1.29.3"
 
 
 proto_include = (protoc.resources.files("grpc_tools") / "_proto").resolve()
-envoy = Path("./envoy")
-envoy_api = Path("./envoy/api")
-envoy_api_v2 = Path("./envoy/api/v2")
+envoy = Path("envoy")
+envoy_api = Path("envoy/api")
+envoy_api_v2 = Path("envoy/api/v2")
 
 Package = namedtuple("Package", ["url", "name", "directory", "namespace"])
 packages = {
@@ -105,7 +105,7 @@ for package in packages:
         shutil.copytree(proto_root / namespace, name)
 
 
-output = Path("../envoy_translater/grpc/protobuf")
+output = Path("../")
 proto_args = [
     __file__,
     f"--proto_path=.",
@@ -124,7 +124,7 @@ def compile_all():
     ]
     args = deepcopy(proto_args)
     args += proto_paths
-    args += [f"--python_out={output}", f"--grpc_python_out={output}", f"--pyi_out={output}"]
+    args += [f"--python_out={output}", f"--grpc_python_out={output}"]
     protoc.main((*args, *proto_files))
 
 
