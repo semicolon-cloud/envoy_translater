@@ -1914,3 +1914,33 @@ Traceback (most recent call last):
 django.db.utils.IntegrityError: UNIQUE constraint failed: listeners_listener.ip, listeners_listener.port
 "POST /listeners HTTP/1.1" 500 145
 "GET /routes?project_id=null HTTP/1.1" 200 667
+Watching for file changes with StatReloader
+Starting Keystone auth_token middleware
+The option "username" is not known to keystonemiddleware
+The option "password" is not known to keystonemiddleware
+The option "project_name" is not known to keystonemiddleware
+The option "project_domain_id" is not known to keystonemiddleware
+The option "user_domain_id" is not known to keystonemiddleware
+The option "auth_url" is not known to keystonemiddleware
+AuthToken middleware is set with keystone_authtoken.service_token_roles_required set to False. This is backwards compatible but deprecated behaviour. Please set this to True.
+Configuring www_authenticate_uri to point to the public identity endpoint is required; clients may not be able to authenticate against an admin endpoint
+Watching for file changes with StatReloader
+Starting Keystone auth_token middleware
+The option "username" is not known to keystonemiddleware
+The option "password" is not known to keystonemiddleware
+The option "project_name" is not known to keystonemiddleware
+The option "project_domain_id" is not known to keystonemiddleware
+The option "user_domain_id" is not known to keystonemiddleware
+The option "auth_url" is not known to keystonemiddleware
+AuthToken middleware is set with keystone_authtoken.service_token_roles_required set to False. This is backwards compatible but deprecated behaviour. Please set this to True.
+Configuring www_authenticate_uri to point to the public identity endpoint is required; clients may not be able to authenticate against an admin endpoint
+Watching for file changes with StatReloader
+Starting Keystone auth_token middleware
+The option "username" is not known to keystonemiddleware
+The option "password" is not known to keystonemiddleware
+The option "project_name" is not known to keystonemiddleware
+The option "project_domain_id" is not known to keystonemiddleware
+The option "user_domain_id" is not known to keystonemiddleware
+The option "auth_url" is not known to keystonemiddleware
+AuthToken middleware is set with keystone_authtoken.service_token_roles_required set to False. This is backwards compatible but deprecated behaviour. Please set this to True.
+Configuring www_authenticate_uri to point to the public identity endpoint is required; clients may not be able to authenticate against an admin endpoint
