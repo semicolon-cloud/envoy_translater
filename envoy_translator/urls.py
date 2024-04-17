@@ -1,5 +1,5 @@
 """
-URL configuration for envoy_translater project.
+URL configuration for envoy_translator project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -18,6 +18,6 @@ from django.urls import include
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r"^", include("envoy_translater.api.urls")),
+    url(r"^", include("envoy_translator.api.urls")),
 ]
 

@@ -18,18 +18,18 @@ import sys
 import confspirator
 from confspirator import groups
 
-from envoy_translater.config import django
-from envoy_translater.config import identity
+from envoy_translator.config import django
+from envoy_translator.config import identity
 
-_root_config = groups.ConfigGroup("envoy_translater")
+_root_config = groups.ConfigGroup("envoy_translator")
 _root_config.register_child_config(django.config_group)
 _root_config.register_child_config(identity.config_group)
 
 _config_files = [
-    "/etc/envoy_translater/envoy_translater.yaml",
-    "/etc/envoy_translater/envoy_translater.toml",
+    "/etc/envoy_translator/envoy_translator.yaml",
+    "/etc/envoy_translator/envoy_translator.toml",
 ]
-_old_config_file = "/etc/envoy_translater/conf.yaml"
+_old_config_file = "/etc/envoy_translator/conf.yaml"
 
 
 _test_mode_commands = [
@@ -53,7 +53,7 @@ def _load_config():
     config_file_locations = list(_config_files)
     config_file_locations.append(_old_config_file)
 
-    conf_file = os.environ.get("ENVOY_TRANSLATER_CONFIG_FILE", None)
+    conf_file = os.environ.get("envoy_translator_CONFIG_FILE", None)
 
     if conf_file:
         config_file_locations.insert(0, conf_file)

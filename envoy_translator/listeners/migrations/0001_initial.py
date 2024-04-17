@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
-import envoy_translater.listeners.models
+import envoy_translator.listeners.models
 import jsonfield.fields
 
 
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Listener',
             fields=[
-                ('uuid', models.CharField(default=envoy_translater.listeners.models.hex_uuid, max_length=32, primary_key=True, serialize=False)),
+                ('uuid', models.CharField(default=envoy_translator.listeners.models.hex_uuid, max_length=32, primary_key=True, serialize=False)),
                 ('listener_name', models.CharField(max_length=200)),
                 ('description', models.CharField(max_length=512)),
                 ('ip', models.CharField(max_length=40)),
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Route',
             fields=[
-                ('uuid', models.CharField(default=envoy_translater.listeners.models.hex_uuid, max_length=32, primary_key=True, serialize=False)),
+                ('uuid', models.CharField(default=envoy_translator.listeners.models.hex_uuid, max_length=32, primary_key=True, serialize=False)),
                 ('domain_names', models.TextField()),
                 ('keystone_user', jsonfield.fields.JSONField(default={})),
                 ('project_id', models.CharField(max_length=64, null=True)),

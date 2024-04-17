@@ -19,7 +19,7 @@ from django.utils import timezone
 
 from rest_framework.response import Response
 
-from envoy_translater import exceptions
+from envoy_translator import exceptions
 
 LOG = getLogger("adjutant")
 

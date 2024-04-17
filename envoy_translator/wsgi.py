@@ -1,5 +1,5 @@
 """
-WSGI config for envoy_translater project.
+WSGI config for envoy_translator project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -22,7 +22,7 @@ https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
 #    under the License.
 
 """
-WSGI config for Adjutant.
+WSGI config for Envoy Translator.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -36,9 +36,9 @@ from django.core.wsgi import get_wsgi_application
 
 from keystonemiddleware.auth_token import AuthProtocol
 
-from envoy_translater.config import CONF
+from envoy_translator.config import CONF
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "adjutant.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "envoy_translator.settings")
 
 
 application = get_wsgi_application()

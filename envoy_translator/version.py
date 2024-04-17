@@ -14,5 +14,5 @@
 
 import pbr.version
 
-version_info = pbr.version.VersionInfo("envoy_translater")
+version_info = pbr.version.VersionInfo("envoy_translator")
 version_string = version_info.version_string()

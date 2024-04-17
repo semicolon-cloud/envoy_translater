@@ -7,9 +7,9 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from envoy_translater import utils
-from envoy_translater.api.utils import parse_filters
-from envoy_translater.listeners.models import Listener, Route
+from envoy_translator import utils
+from envoy_translator.api.utils import parse_filters
+from envoy_translator.listeners.models import Listener, Route
 
 
 class APIViewWithLogger(APIView):
@@ -19,7 +19,7 @@ class APIViewWithLogger(APIView):
 
     def __init__(self, *args, **kwargs):
         super(APIViewWithLogger, self).__init__(*args, **kwargs)
-        self.logger = getLogger("envoy_translater")
+        self.logger = getLogger("envoy_translator")
 
 
 class ListenerList(APIViewWithLogger):

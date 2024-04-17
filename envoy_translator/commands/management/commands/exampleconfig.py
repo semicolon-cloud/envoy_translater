@@ -6,10 +6,10 @@ from envoy_translator import config
 
 
 class Command(BaseCommand):
-    help = "Produce an example config file for Adjutant."
+    help = "Produce an example config file for envoy_translator."
 
     def add_arguments(self, parser):
-        parser.add_argument("--output-file", default="adjutant.yaml")
+        parser.add_argument("--output-file", default="envoy_translator.yaml")
 
     def handle(self, *args, **options):
         print("Generating example file to: '%s'" % options["output_file"])

@@ -13,7 +13,7 @@
 #    under the License.
 
 """
-Django settings for envoy_translater.
+Django settings for envoy_translator.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.11/topics/settings/
@@ -26,7 +26,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import sys
 
-from envoy_translater.config import CONF as et_conf
+from envoy_translator.config import CONF as et_conf
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -40,26 +40,26 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_swagger",
-    "envoy_translater.listeners",
-    "envoy_translater.api"
+    "envoy_translator.listeners",
+    "envoy_translator.api"
 )
 
 MIDDLEWARE = (
     "django.middleware.common.CommonMiddleware",
-    "envoy_translater.middleware.KeystoneHeaderUnwrapper",
-    "envoy_translater.middleware.RequestLoggingMiddleware",
+    "envoy_translator.middleware.KeystoneHeaderUnwrapper",
+    "envoy_translator.middleware.RequestLoggingMiddleware",
 )
 
 
 if "test" in sys.argv:
     # modify MIDDLEWARE
     MIDDLEWARE = list(MIDDLEWARE)
-    MIDDLEWARE.remove("envoy_translater.middleware.KeystoneHeaderUnwrapper")
-    MIDDLEWARE.append("envoy_translater.middleware.TestingHeaderUnwrapper")
+    MIDDLEWARE.remove("envoy_translator.middleware.KeystoneHeaderUnwrapper")
+    MIDDLEWARE.append("envoy_translator.middleware.TestingHeaderUnwrapper")
 
-ROOT_URLCONF = "envoy_translater.urls"
+ROOT_URLCONF = "envoy_translator.urls"
 
-WSGI_APPLICATION = "envoy_translater.wsgi.application"
+WSGI_APPLICATION = "envoy_translator.wsgi.application"
 
 LANGUAGE_CODE = "en-us"
 
@@ -82,7 +82,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
-        "DIRS": ["/etc/envoy_translater/templates/"],
+        "DIRS": ["/etc/envoy_translator/templates/"],
         "NAME": "include_etc_templates",
     },
 ]
@@ -90,7 +90,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = []
 
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "envoy_translater.api.exception_handler.exception_handler",
+    "EXCEPTION_HANDLER": "envoy_translator.api.exception_handler.exception_handler",
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
@@ -132,7 +132,7 @@ else:
             },
         },
         "loggers": {
-            "envoy_translater": {
+            "envoy_translator": {
                 "handlers": ["file"],
                 "level": "INFO",
                 "propagate": False,

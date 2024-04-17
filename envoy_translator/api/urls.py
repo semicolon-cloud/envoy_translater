@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from envoy_translater.api import views
+from envoy_translator.api import views
 
 urlpatterns = [
     url(r"^listeners/?$", views.ListenerList.as_view()),
