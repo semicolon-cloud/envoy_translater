@@ -45,7 +45,7 @@ _test_mode_commands = [
 
 
 def _load_config():
-    if "adjutant-api" in sys.argv[0] and sys.argv[1] in _test_mode_commands:
+    if "envoy_translator-api" in sys.argv[0] and sys.argv[1] in _test_mode_commands:
         test_mode = True
     else:
         test_mode = False
@@ -53,7 +53,7 @@ def _load_config():
     config_file_locations = list(_config_files)
     config_file_locations.append(_old_config_file)
 
-    conf_file = os.environ.get("envoy_translator_CONFIG_FILE", None)
+    conf_file = os.environ.get("ENVOY_TRANSLATOR_CONFIG_FILE", None)
 
     if conf_file:
         config_file_locations.insert(0, conf_file)
