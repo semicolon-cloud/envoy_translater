@@ -177,7 +177,7 @@ class RouteList(APIViewWithLogger):
             listener=listener,
         )
 
-        requests.post("http://172.29.236.1/callback")
+        requests.post("http://172.29.236.1:18001/callback")
 
         return Response({"route": route.to_dict()})
 
@@ -201,7 +201,7 @@ class RouteDetail(APIViewWithLogger):
             return Response({"errors": ["Forbidden"]}, status=403)
 
         route.delete()
-        requests.post("http://172.29.236.1/callback")
+        requests.post("http://172.29.236.1:18001/callback")
         return Response(route.to_dict())
 
     def put(self, request, route_id):
@@ -224,7 +224,7 @@ class RouteDetail(APIViewWithLogger):
         route.updated_on = timezone.now()
 
         route.save()
-        requests.post("http://172.29.236.1/callback")
+        requests.post("http://172.29.236.1:18001/callback")
         return Response(route.to_dict())
 
 
