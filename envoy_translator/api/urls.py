@@ -7,4 +7,5 @@ urlpatterns = [
     url(r"^listeners/(?P<listener_id>\w+)/?$", views.ListenerDetail.as_view()),
     url(r"^routes/?$", views.RouteList.as_view()),
     url(r"^routes/(?P<route_id>\w+)/?$", views.RouteDetail.as_view()),
+    url(r"^healthcheck/?$", views.HealthCheck.as_view())
 ]

@@ -221,3 +221,8 @@ class RouteDetail(APIViewWithLogger):
 
         route.save()
         return Response(route.to_dict())
+
+
+class HealthCheck(APIViewWithLogger):
+    def get(self, request):
+        return Response({"healthy": True})
