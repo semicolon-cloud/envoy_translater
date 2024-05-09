@@ -70,7 +70,7 @@ class ListenerList(APIViewWithLogger):
 
     @utils.admin
     def post(self, request): # create
-        if request.data["type"] not in ["tls", "http"]:
+        if request.data["type"] not in ["tls", "http", "tcp"]:
             return Response({"errors": ["Invalid type"]}, status=400)
 
         listener = Listener.objects.create(
@@ -96,6 +96,19 @@ class ListenerDetail(APIViewWithLogger):
             routes_list.append(route.to_dict())
 
         return Response({"listener": listener.to_dict(), "routes": routes_list})
+
+    @utils.admin
+    @parse_filters
+    def delete(self, request, listener_id):
+        listener = Listener.objects.get(uuid=listener_id)
+
+        routes = Route.objects.filter(listener=listener)
+        if routes.exists():
+            return Response({"errors": "Can not delete listener with routes"}, status=400)
+
+        listener.delete()
+
+        return Response()
 
 
 class RouteList(APIViewWithLogger):
