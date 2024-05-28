@@ -232,7 +232,7 @@ class RouteDetail(APIViewWithLogger):
                 'ip': obj["ip"],
                 'port': obj["port"]
             })
-        route.target_servers.set(target_servers)
+        route.target_servers = target_servers
         route.domain_names = ','.join(request.data["domain_names"])
         route.updated_on = timezone.now()
 
